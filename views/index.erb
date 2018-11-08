@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>LocalCommunity</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/assets/style.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/regular.css" integrity="sha384-OEIzojYBMrmz48aIjVQj7VG38613/sxpP58OW9h5zBYC7biGFlv9tyu5kWmaAYlF" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/brands.css" integrity="sha384-BCEeiNUiLzxxoeYaIu7jJqq0aVVz2O2Ig4WbWEmRQ2Dx/AAxNV1wMDBXyyrxw1Zd" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+	<div id="content">
+	 <header>
+	  <div class="searchber">
+	  <form action="/tasks" method="get" >
+	   <input type="text" placeholder="＃タグを検索..." name="tag" class="tag_s_fo">
+	   <button type="submit" class="tag_s_b">
+	<i class="fas fa-search"></i>
+</button>
+	  </form>
+	  <div class="user_ber">
+	   
+	  </div>
+	  </div>
+	  
+	  <div class="profile">
+    <% if !current_user.nil? %>
+    <div class="profile_icon">
+     <img src="">
+    </div>
+    <div class="profile_post">
+     <div class="my_posts">
+      <div class="info_ber">
+       <figure><img></figure>
+       <div class="my_pro">
+        <p class="my_name"><%= current_user.name %></p>
+        <p class="my_bio"><%= current_user.about %></p>
+        <div>
+         <p class="my_lca"><%= current_user.location %></p>
+          <p class="my_tags"><%= current_user.tag %></p>
+          </div>
+       </div>
+      </div>
+			 <div class="posts">
+ <form action="/tasks" method="post" enctype="multipart/form-data">
+  <div>
+   <div>
+     <input type="text" name="title" placeholder="タイトル"><br>
+     <input type="text" name="description" placeholder="説明を..."><br>
+     <input type="text" name="location" placeholder="位置情報を..."><br>
+     <input type="text" name="tag" placeholder="#tags..."><br>
+   </div>
+      <div>
+    <input type="file" name="picture" value="写真を...">
+   </div>
+   <div>
+    <input type="submit" value="投稿！！">
+   </div>
+   
+    <a href="/signout">ログアウト</a>
+
+   
+  </div>
+ </form>
+</div> 
+             <div class="poster">
+              <div>
+                 <% @tasks.each do |task| %>
+                  
+                 <figure>
+
+                 </figure>
+                 <tr>
+                  <td><%= CGI.escapeHTML(task.title) %></td>　<td><%= CGI.escapeHTML(task.description) %></td>　<td><%= CGI.escapeHTML(task.location) %></td>　<td><%= CGI.escapeHTML(task.tag) %></td>
+                 </tr>
+                 <tr>
+                  <td>
+                   <form action="/tasks/<%= task.id %>/delete" method="post">
+                    <button type="submit">
+                     消す
+                    </button>
+                    </form>
+                    <button class="edit"><i class="fas fa-edit"></i></button>
+                    <div class="editform">
+                    <form action="/tasks/<%= task.id %>/" method="post">
+                     <input type="text" name="title" placeholder="タイトル" value="<%= CGI.escapeHTML(task.title) %>"><br>
+                     <input type="text" name="description" placeholder="説明" value="<%= CGI.escapeHTML(task.description) %>"><br>
+                     <input type="text" name="location" placeholder="位置情報" value="<%= CGI.escapeHTML(task.location) %>"><br>
+                     <input type="text" name="tag" placeholder="タグ" value="<%= CGI.escapeHTML(task.tag) %>"><br>
+                     <button type="submit">
+                      完了
+                     </button>
+                    </form>
+                    </div>
+                    <script>
+                     $('.edit').click(function(){
+                      $('.editform').addClass('edi_on');
+                     });
+                    </script>
+                   </form>
+                  </td>
+                 </tr>
+              </table>               
+               <% end %>
+              </div>
+             </div>
+           </div>
+    </div>
+     <script>
+     $(".profile_icon").on("click", function() {
+  $(".profile_post").toggleClass('pr_op');
+});
+    </script>
+    <% else %>
+    <a class="log_icon" >
+    <p>ログイン／新規登録</p>
+    <div class="wave"></div>
+    <div class="wing"></div>
+  
+       </a>
+       <div id="log_con">
+        <div class="logg">
+    <div class="login">
+        <form action="/users" method="post" enctype="multipart/form-data">
+         <div class="mail">
+          <i class="fas fa-at"></i>
+            <input type="text"  name="email" placeholder="メールアドレス…">
+</div>
+         <div class="pass">
+          <i class="fas fa-unlock-alt"></i>
+            <input name="password" placeholder="パスワード…" type="password">
+ </div>
+ <div class="in_ber">
+            <button type="submit">
+                ログイン！
+            </button>
+            <div></div>
+            </div>
+             <div class="in_ber" href="/sinki">
+                          <button onClick="window.open('/sinki')" class="sinki">新規登録！</button>
+             <div></div>
+             </div>
+        </form>
+
+        </div>
+  
+        </div>
+    </div>
+    <script>
+     $(".log_icon").on("click", function() {
+  $("#log_con").toggleClass('lo_op');
+});
+$('#main').click(function(){
+ $("#log_con").removeClass('lo_op');
+});
+    </script>
+    <% end %>
+ 
+	  </div>
+	 </header>
+	 
+		<div id="main">
+		 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6484.037153273653!2d139.68656227348026!3d35.65191394599549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1541207360686" width="600" height="450" frameborder="0" style="border:0" class="map" allowfullscreen></iframe>
+			
+		</div>
+		</div>
+		<script>
+	   $('.tag_s_fo').click(function(){
+	    $('.searchber').addClass('se_on');
+	   });
+	   $("#main").click(function(){
+	    $('.searchber').removeClass('se_on');
+	   });
+	  </script>
+</body>
+</html>
