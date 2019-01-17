@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     t.string :pro_icon
     t.string :location
     t.string :about
-    t.string :tag
     t.timestamps null: false
    end
   end

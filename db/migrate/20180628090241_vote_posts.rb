@@ -5,8 +5,7 @@ class VotePosts < ActiveRecord::Migration[5.2]
     t.string :title
     t.string :description
     t.string :location
-    t.string :tag
-    t.string :picture
+    t.string :img
     t.timestamps null: false
    end
   end

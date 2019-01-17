@@ -6,14 +6,14 @@ gem 'sinatra-contrib'
 
 gem 'rake'
 gem 'sinatra-activerecord'
-# gem 'carrierwave' , '1.2.2'
 gem 'sinatra-strong-params', :require => 'sinatra/strong-params'
-
+gem 'nokogiri'
+gem 'dotenv'
 gem 'pry'
 gem 'mini_magick'
 gem 'bcrypt'
 gem 'paperclip'
-
+gem 'cloudinary'
 group :development do
 gem 'sqlite3'
 end

@@ -10,18 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_065212) do
+ActiveRecord::Schema.define(version: 2018_11_15_095858) do
+
+  create_table "tags", force: :cascade do |t|
+    t.string "post_tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_tags", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.string "description"
     t.string "location"
-    t.string "tag"
-    t.string "picture"
+    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.integer "ustag_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,7 +52,12 @@ ActiveRecord::Schema.define(version: 2018_10_30_065212) do
     t.string "pro_icon"
     t.string "location"
     t.string "about"
-    t.string "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ustags", force: :cascade do |t|
+    t.string "ustag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
