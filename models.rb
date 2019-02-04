@@ -1,6 +1,6 @@
 require 'bundler/setup'
-# require 'lib/carrierwave/mount'
-# require './image_uploader.rb'
+
+require './image_uploader.rb'
 
 
 Bundler.require
