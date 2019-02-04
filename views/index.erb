@@ -24,7 +24,7 @@
 	            </div>
 	        </div>
             <div class="profile">
-                
+
     <% if !current_user.nil? %>
     <div class="profile_icon">
      <img src="">
@@ -47,7 +47,7 @@
  <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
   <div>
    <div class="pos_con">
-  
+
      <input type="text" name="title" placeholder="タイトル"><br>
      <input type="text" name="description" placeholder="説明を..."><br>
 
@@ -71,7 +71,7 @@
               <div class="postion">
                 <figure class="figg" onclick="addv()">
                    <div class="add">
-           
+
                     </div>
                              <p class="addp">+</p>
                   </figure>
@@ -101,20 +101,20 @@ margin-top: 6px;
 
 justify-content: center;
   transition: .3s ease;
-        
+
     }
-    
+
     .figg:hover{
-        
+
         /*filter: brightness(0.6);*/
         cursor: pointer;
     }
-    
+
     .figg:hover .add{
         transition: .3s ease;
         transform: scale(1.1);
     }
-    
+
     .figg:hover .addp{
         transition: .3s ease;
         transform: scale(1.1);
@@ -131,9 +131,9 @@ justify-content: center;
         text-align: center;
         font-size: 30px;
         color: #666;
-    
-} 
-    
+
+}
+
     .figg .addp{
 
           position: absolute;
@@ -142,7 +142,7 @@ justify-content: center;
         text-align: center;
         font-size: 30px;
         color: #666;
-    
+
 }
     .taskimg<%= task.id %>{
         width: 100%;
@@ -158,7 +158,7 @@ justify-content: center;
         filter: brightness(70%);
         transition: .3s ease;
         height: auto;
-        
+
     }
 .poster .fig<%= task.id %>{
 
@@ -173,13 +173,6 @@ margin-top: 6px;
     transition: .3s;
 }
 
-.poster .fig1{
-  border-radius: 2px 0 0 0;
-}
-
-.poster .fig3{
-
-}
 
 
 
@@ -205,7 +198,7 @@ cursor: pointer;
         height: 100%;
     opacity: 0;
         width: 100%;
-        
+
 
     transition: .3s;
         color: #fff;
@@ -219,9 +212,9 @@ cursor: pointer;
 
                  <div class="po_con<%= task.id %>">
                  <div class="poscon">
-                
+
                   <!-- <p class="p_title"><%= CGI.escapeHTML(task.title) %></p>--><p class="p_tag"><% task.tags.each do |tag| %><span style="background-color: #333; color: #fff; border-radius: 2px; margin-right: 2px; padding: 3px 3px 3px 3px;">＃<%= CGI.escapeHTML(tag.post_tag) %></span><% end %></p>
-                     
+
                      </div>
 
 
