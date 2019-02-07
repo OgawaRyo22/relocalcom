@@ -43,30 +43,7 @@
           </div>
        </div>
       </div>
-			 <div class="posts">
- <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
-  <div>
-   <div class="pos_con">
-
-     <input type="text" name="title" placeholder="タイトル"><br>
-     <input type="text" name="description" placeholder="説明を..."><br>
-
-     <input type="text" name="location" placeholder="位置情報を..."><br>
-      <input type="text" name="post_tag" placeholder="#tags..."><br>
-   </div>
-      <div>
-    <input type="file" name="file" value="写真を...">
-   </div>
-   <div>
-    <input type="submit" value="投稿！！">
-   </div>
-
-    <a href="/signout">ログアウト</a>
-
-
-  </div>
- </form>
-</div>
+		
              <div class="poster">
               <div class="postion">
                 <figure class="figg" onclick="addv()">
@@ -77,11 +54,16 @@
                   </figure>
                   <script>
                   function addv() {
-                      $(".posts").toggleClass("pos_visi");
+                      $(".posts").addClass("pos_visi"); $(".board").addClass("m_focus");
+                      
                       var a = "saa";
                       console.log(a);
                   };
+                      
+
+                    
                   </script>
+                 
                  <% @tasks.each do |task| %>
 
                  <figure class="fig<%= task.id %> figfig">
@@ -279,8 +261,47 @@ $('#main').click(function(){
 	 </header>
 
 		<div id="main">
-		 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6484.037153273653!2d139.68656227348026!3d35.65191394599549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1541207360686" width="600" height="450" frameborder="0" style="border:0" class="map" allowfullscreen></iframe>
+         <div class="board"></div>
+			 <div class="posts">
+ <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
+  <div class="pos_in">
+     <labal for="file" class="up_ber">
+      <input type="file" name="file" value="写真を..." style="display: none;">
+      </labal>
+        <div>
+   <div class="pos_con">
 
+     <input type="text" name="title" placeholder="タイトル"><br>
+     <input type="text" name="description" placeholder="説明を..."><br>
+
+     <input type="text" name="location" placeholder="位置情報を..."><br>
+      <input type="text" name="post_tag" placeholder="#tags..."><br>
+   </div>
+    
+
+   
+   <div>
+    <input type="submit" value="投稿！！">
+    </div>
+   </div>
+
+    <a href="/signout">ログアウト</a>
+
+
+  </div>
+ </form>
+</div>
+		 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6484.037153273653!2d139.68656227348026!3d35.65191394599549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1541207360686" width="600" height="450" frameborder="0" style="border:0" class="map" allowfullscreen></iframe>
+ <script>
+                         $(".board").click(function(){
+                              console.log(1);
+                             
+                         $(this).removeClass("m_focus"); $(".posts").removeClass("pos_visi"); 
+                             
+                            
+                          
+                      });
+                  </script>
 		</div>
 		</div>
 		<script>

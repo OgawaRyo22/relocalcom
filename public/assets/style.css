@@ -205,9 +205,24 @@ height: 80px;
  #main{
      width: 100vw;
      display: flex;
+     transition: .3s;
      flex-wrap: wrap;
      justify-content: center;
  }
+
+.board{
+    z-index: -8;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.m_focus{
+    filter: brightness(0.5);
+     transition: .3s;
+     z-index: 2;
+}
+
 
  #main p{
      margin-top: 100px;
@@ -218,15 +233,47 @@ height: 80px;
      width: 100%;
  }
 
+.posts form{
+    display: flex;
+    width: 100%;
+}
+
+.pos_in{
+    width: 100%;
+    box-shadow: 2px 2px 2px #66666622;
+
+    border-radius: 4px;
+    display: flex;
+}
+
 .posts{
-    display: none;
+display: flex;
+    position: absolute;
+
+    opacity: 0;
+  top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+    width: 570px;
+    height: 200px;
+    background-color: #fff;
     transition: .3s;
 }
 
-.pos_visi{
-    display: flex!important;
-    transition: .3s;
+.up_ber{
+    height: 100%;
+    width: 200px;
+     display: inline-block;
+    background-color: #333;
+}
 
+.pos_visi{
+    display: flex;
+    transition: .3s;
+    opacity: 1;
+  z-index: 3;
 }
 
 .poscon{
