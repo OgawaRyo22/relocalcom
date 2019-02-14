@@ -63,6 +63,35 @@
                     </div>
                              <p class="addp">+</p>
                   </figure>
+                  	 <div class="posts disp">
+ <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
+  <div class="pos_in">
+     <label for="image_up" class="up_ber">
+      <input type="file" id="image_up" name="file" value="写真を...">
+      </label>
+        <div>
+   <div class="pos_con">
+
+     <input type="text" name="title" placeholder="タイトル"><br>
+     <input type="text" name="description" placeholder="説明を..."><br>
+
+     <input type="text" name="location" placeholder="位置情報を..."><br>
+      <input type="text" name="post_tag" placeholder="#tags..."><br>
+   </div>
+
+
+
+   <div>
+    <input type="submit" value="投稿！！">
+    </div>
+   </div>
+
+
+
+
+  </div>
+ </form>
+</div>
                   <script>
                   function addv() {
                       $(".posts").addClass("pos_visi");   $(".posts").addClass("pos_visi_d"); $(".board").addClass("m_focus");
@@ -144,7 +173,6 @@ cursor: pointer;
 
                  <div class="po_con<%= task.id %>">
                  <div class="poscon">
-
                   <!-- <p class="p_title"><%= CGI.escapeHTML(task.title) %></p>--><p class="p_tag"><% task.tags.each do |tag| %><span style="background-color: #333; color: #fff; border-radius: 2px; margin-right: 2px; padding: 3px 3px 3px 3px;">＃<%= CGI.escapeHTML(tag.post_tag) %></span><% end %></p>
 
                      </div>
@@ -282,36 +310,8 @@ $('#main').click(function(){
 	 </header>
 
 		<div id="main">
-         <div class="board board_d"></div>
-			 <div class="posts disp">
- <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
-  <div class="pos_in">
-     <label for="image_up" class="up_ber">
-      <input type="file" id="image_up" name="file" value="写真を...">
-      </label>
-        <div>
-   <div class="pos_con">
 
-     <input type="text" name="title" placeholder="タイトル"><br>
-     <input type="text" name="description" placeholder="説明を..."><br>
-
-     <input type="text" name="location" placeholder="位置情報を..."><br>
-      <input type="text" name="post_tag" placeholder="#tags..."><br>
-   </div>
-
-
-
-   <div>
-    <input type="submit" value="投稿！！">
-    </div>
-   </div>
-
-
-
-
-  </div>
- </form>
-</div>
+		
 		 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6484.037153273653!2d139.68656227348026!3d35.65191394599549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1541207360686" width="600" height="450" frameborder="0" style="border:0" class="map" allowfullscreen></iframe>
  <script>
                          $(".board").click(function(){
