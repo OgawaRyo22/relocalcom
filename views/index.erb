@@ -17,7 +17,7 @@
 	    <header>
 	        <div class="searchber">
 	            <form action="/tasks" autocomplete="off" method="get" autocomplete="off" >
-	                <input type="text" placeholder="＃タグを検索..." name="tag" class="tag_s_fo">
+	                <input type="text" placeholder="＃キーワードを検索..." name="tag" class="tag_s_fo">
 	                <button type="submit" class="tag_s_b"><i class="fas fa-search"></i></button>
 	            </form>
 	            <div class="user_ber">
@@ -29,6 +29,7 @@
     <div class="profile_icon">
      <img src="">
     </div>
+    <div class="setting_icon"><button><i class="fas fa-cog"></i></button></div>
     <div class="profile_post">
 <!--<div class="scroll_m"></div>-->
      <div class="my_posts">
@@ -54,7 +55,8 @@
                   </figure>
                   <script>
                   function addv() {
-                      $(".posts").addClass("pos_visi"); $(".board").addClass("m_focus");
+                      $(".posts").addClass("pos_visi");   $(".posts").addClass("pos_visi_d"); $(".board").addClass("m_focus");
+                      $(".board").addClass("m_focus_d");
                       
                       var a = "saa";
                       console.log(a);
@@ -183,9 +185,18 @@ cursor: pointer;
              </div>
            </div>
     </div>
+    <div class="profile_setting">
+        <a href="/signout">ログアウト</a>
+    </div>
      <script>
      $(".profile_icon").on("click", function() {
   $(".profile_post").toggleClass('pr_op');
+         $(".profile_setting").removeClass('st_op');
+});
+         
+         $(".setting_icon").on("click", function() {
+  $(".profile_setting").toggleClass('st_op');
+ $(".profile_post").removeClass('pr_op');
 });
     </script>
     <% else %>
@@ -261,13 +272,13 @@ $('#main').click(function(){
 	 </header>
 
 		<div id="main">
-         <div class="board"></div>
-			 <div class="posts">
+         <div class="board board_d"></div>
+			 <div class="posts disp">
  <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
   <div class="pos_in">
-     <labal for="file" class="up_ber">
-      <input type="file" name="file" value="写真を..." style="display: none;">
-      </labal>
+     <label for="image_up" class="up_ber">
+      <input type="file" id="image_up" name="file" value="写真を...">
+      </label>
         <div>
    <div class="pos_con">
 
@@ -285,7 +296,7 @@ $('#main').click(function(){
     </div>
    </div>
 
-    <a href="/signout">ログアウト</a>
+
 
 
   </div>
@@ -296,7 +307,8 @@ $('#main').click(function(){
                          $(".board").click(function(){
                               console.log(1);
                              
-                         $(this).removeClass("m_focus"); $(".posts").removeClass("pos_visi"); 
+                         $(this).removeClass("m_focus");  $(this).removeClass("m_focus_d"); $(".posts").removeClass("pos_visi"); 
+                             $(".posts").removeClass("pos_visi_d"); 
                              
                             
                           
@@ -305,12 +317,18 @@ $('#main').click(function(){
 		</div>
 		</div>
 		<script>
-	   $('.tag_s_fo').click(function(){
-	    $('.searchber').addClass('se_on');
+            $(function(){
+	   $('.tag_s_fo')
+           .focusin(function(e){
+	    $('.searchber').css('box-shadow', '1px 2px 30px 0px #33333380');
+           console.log("focus");
+	   })
+            
+            .focusout(function(e){
+	    $('.searchber').css('box-shadow', '1px 2px 15px 0px #33333380');
+           console.log("focus");
 	   });
-	   $("#main").click(function(){
-	    $('.searchber').removeClass('se_on');
-	   });
+              });
 	  </script>
 </body>
 </html>
