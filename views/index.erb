@@ -3,6 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>LocalCommunity</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82913843-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82913843-2');
+</script>
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="/assets/style.css">
@@ -44,7 +54,7 @@
           </div>
        </div>
       </div>
-		
+
              <div class="poster">
               <div class="postion">
                 <figure class="figg" onclick="addv()">
@@ -57,15 +67,15 @@
                   function addv() {
                       $(".posts").addClass("pos_visi");   $(".posts").addClass("pos_visi_d"); $(".board").addClass("m_focus");
                       $(".board").addClass("m_focus_d");
-                      
+
                       var a = "saa";
                       console.log(a);
                   };
-                      
 
-                    
+
+
                   </script>
-                 
+
                  <% @tasks.each do |task| %>
 
                  <figure class="fig<%= task.id %> figfig">
@@ -193,7 +203,7 @@ cursor: pointer;
   $(".profile_post").toggleClass('pr_op');
          $(".profile_setting").removeClass('st_op');
 });
-         
+
          $(".setting_icon").on("click", function() {
   $(".profile_setting").toggleClass('st_op');
  $(".profile_post").removeClass('pr_op');
@@ -288,9 +298,9 @@ $('#main').click(function(){
      <input type="text" name="location" placeholder="位置情報を..."><br>
       <input type="text" name="post_tag" placeholder="#tags..."><br>
    </div>
-    
 
-   
+
+
    <div>
     <input type="submit" value="投稿！！">
     </div>
@@ -306,12 +316,12 @@ $('#main').click(function(){
  <script>
                          $(".board").click(function(){
                               console.log(1);
-                             
-                         $(this).removeClass("m_focus");  $(this).removeClass("m_focus_d"); $(".posts").removeClass("pos_visi"); 
-                             $(".posts").removeClass("pos_visi_d"); 
-                             
-                            
-                          
+
+                         $(this).removeClass("m_focus");  $(this).removeClass("m_focus_d"); $(".posts").removeClass("pos_visi");
+                             $(".posts").removeClass("pos_visi_d");
+
+
+
                       });
                   </script>
 		</div>
@@ -323,7 +333,7 @@ $('#main').click(function(){
 	    $('.searchber').css('box-shadow', '1px 2px 30px 0px #33333380');
            console.log("focus");
 	   })
-            
+
             .focusout(function(e){
 	    $('.searchber').css('box-shadow', '1px 2px 15px 0px #33333380');
            console.log("focus");
