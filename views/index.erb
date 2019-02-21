@@ -37,12 +37,16 @@
 
     <% if !current_user.nil? %>
     <div class="profile_icon">
+  
      <img src="">
     </div>
     <div class="setting_icon"><button><i class="fas fa-cog"></i></button></div>
     <div class="profile_post">
 <!--<div class="scroll_m"></div>-->
+            
      <div class="my_posts">
+         
+         <div class="p_view">
       <div class="info_ber">
        <figure><img></figure>
        <div class="my_pro">
@@ -56,6 +60,7 @@
       </div>
 
              <div class="poster">
+                 
               <div class="postion">
                 <figure class="figg" onclick="addv()">
                    <div class="add">
@@ -63,39 +68,11 @@
                     </div>
                              <p class="addp">+</p>
                   </figure>
-                  	 <div class="posts disp">
- <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
-  <div class="pos_in">
-     <label for="image_up" class="up_ber">
-      <input type="file" id="image_up" name="file" value="写真を...">
-      </label>
-        <div>
-   <div class="pos_con">
-
-     <input type="text" name="title" placeholder="タイトル"><br>
-     <input type="text" name="description" placeholder="説明を..."><br>
-
-     <input type="text" name="location" placeholder="位置情報を..."><br>
-      <input type="text" name="post_tag" placeholder="#tags..."><br>
-   </div>
-
-
-
-   <div>
-    <input type="submit" value="投稿！！">
-    </div>
-   </div>
-
-
-
-
-  </div>
- </form>
-</div>
+                  	 
                   <script>
                   function addv() {
-                      $(".posts").addClass("pos_visi");   $(".posts").addClass("pos_visi_d"); $(".board").addClass("m_focus");
-                      $(".board").addClass("m_focus_d");
+                      $(".posts").toggleClass("pos_visi");
+                      $(".p_view").toggleClass("p_move");
 
                       var a = "saa";
                       console.log(a);
@@ -106,7 +83,6 @@
                   </script>
 
                  <% @tasks.each do |task| %>
-
                  <figure class="fig<%= task.id %> figfig">
                  <img src="<%= task.img %>" class="taskimg<%= task.id %>">
 
@@ -219,14 +195,53 @@ cursor: pointer;
 
 
                <% end %>
+
+
               </div>
              </div>
+         </div>
+           <div class="posts disp">
+               <a class="back"><p>＜ 戻る</p></a>
+ <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
+  <div class="pos_in">
+     <label for="image_up" class="up_ber">
+      <input type="file" id="image_up" name="file" value="写真を...">
+      </label>
+        <div>
+   <div class="pos_con">
+
+     <input type="text" name="title" placeholder="タイトル"><br>
+     <input type="text" name="description" placeholder="説明を..."><br>
+
+     <input type="text" name="location" placeholder="位置情報を..."><br>
+      <input type="text" name="post_tag" placeholder="#tags..."><br>
+   </div>
+
+
+
+   <div>
+    <input type="submit" value="投稿！！">
+    </div>
+   </div>
+
+
+
+
+  </div>
+ </form>
+</div>
            </div>
     </div>
     <div class="profile_setting">
         <a href="/signout">ログアウト</a>
     </div>
      <script>
+
+         $(".back").click(function(){
+             $(".posts").removeClass("pos_visi");
+                      $(".p_view").removeClass("p_move");
+             console.log("ssaaa")
+         });
      $(".profile_icon").on("click", function() {
   $(".profile_post").toggleClass('pr_op');
          $(".profile_setting").removeClass('st_op');
@@ -311,19 +326,9 @@ $('#main').click(function(){
 
 		<div id="main">
 
-		
+
 		 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6484.037153273653!2d139.68656227348026!3d35.65191394599549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1541207360686" width="600" height="450" frameborder="0" style="border:0" class="map" allowfullscreen></iframe>
- <script>
-                         $(".board").click(function(){
-                              console.log(1);
 
-                         $(this).removeClass("m_focus");  $(this).removeClass("m_focus_d"); $(".posts").removeClass("pos_visi");
-                             $(".posts").removeClass("pos_visi_d");
-
-
-
-                      });
-                  </script>
 		</div>
 		</div>
 		<script>

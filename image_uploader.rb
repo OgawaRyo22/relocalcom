@@ -5,8 +5,9 @@ def image_upload(img)
   upload = Cloudinary::Uploader.upload(tempfile.path)
 
   tasks = Task.last
+tasks.update_attribute(:img, upload['url'])
 
-  tasks.update_attribute(:img, upload['url'])
+
 end
 
 def image_upload_local(img)

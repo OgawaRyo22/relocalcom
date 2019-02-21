@@ -108,7 +108,7 @@ top: 28px;
 
 .profile{
 height: 80px;
-    width: 250px;
+
     margin-right: 4%;
     justify-content: flex-end;
     display: flex;
@@ -120,7 +120,7 @@ height: 80px;
     margin-left: 30px;
     width: 50px;
     height: 50px;
-    
+
    box-shadow: 1px 2px 15px 0px #33333388;
     background-size: cover;
 }
@@ -240,12 +240,12 @@ height: 80px;
    background-color: #000;
     opacity: 0.7;
      transition: .3s;
-   
+
 
 }
 
 .m_focus_d{
- 
+
      z-index: 5;
 }
 
@@ -257,6 +257,11 @@ height: 80px;
  .my_posts{
 
      width: 100%;
+     overflow: scroll;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: start;
+     height: 100%;
  }
 
 .posts form{
@@ -273,36 +278,44 @@ height: 80px;
 
 .disp{
 z-index: -1;
-   
+
     transition-delay: 1s;
 }
 
 .posts{
-
+position: absolute;
 
  
-    position: absolute;
   display: flex;
-    opacity: 0;
+  visibility: hidden;
+
     justify-content: center;
-  top: 0;
-left: 0;
-right: 0;
-    transform: translateY(-30px);
-bottom: 0;
-margin: auto;
-    width: 800px;
-    height: 200px;
-    transition: .3s;
+ flex-wrap: wrap;
+transform: translateX(calc(100% + 50px));
+
+
+    width: 400px;
+    height: 129px;
+    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
 
 
 }
 
+.pos_visi{
+    display: flex;
+    visibility: visible!important;
+margin-left: 50px;
+    transform: translateX(calc(0% - 50px));
+        height: 129px;
+transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+  z-index: 4;
+}
+
 .pos_con input{
-    width: 400px;
+    width: 229px;
     height: 40px;
     background-color: #fff;
-    border-radius: 6px;
+
     margin-bottom: 30px;
     padding-left: 6px;
     padding-right: 6px;
@@ -311,14 +324,14 @@ margin: auto;
 
 .pos_con{
     margin-left: 30px;
-    
+
 }
 
 .up_ber{
     height: 100%;
-    width: 200px;
+    width: 129px;
      cursor: pointer;
-    border-radius: 6px;
+ 
      display: inline-block;
     background-color: #333;
 }
@@ -328,20 +341,20 @@ margin: auto;
 }
 
 .pos_con input[name="title"]{
-  
+
 }
 
-.pos_visi{
-    display: flex;
 
 
-  z-index: 10;
+.back{
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
 }
-.pos_visi_d{
-        opacity: 1;
-    transition-delay: .5s;
-        
-    transition: .3s;
+
+.back p{
+    font-size: 25px;
+    color: #666;
 }
 
 .poscon{
@@ -420,7 +433,22 @@ margin: auto;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+     width: 100%;
  }
+
+.p_view{
+    width: 100%;
+     transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+
+}
+
+.p_move{
+    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+    transform: translateX(-100%);
+    visibility: hidden;
+    
+}
+
 
 
  .poster figure{
@@ -447,7 +475,7 @@ margin: auto;
 
  }
 
- 
+
 
 .profile_setting{
        justify-content: flex-end;
@@ -476,14 +504,14 @@ margin: auto;
          transition: 0.5s cubic-bezier(0.35, 0.71, 0.25, 1);
      box-shadow: 0px 0px 14px 2px #33333338;
      z-index: 3;
-   
+
  }
 
 .profile_setting a{
     text-align: center;
     width: 100%;
     color: #e63c35;
-    
+
 }
 
  .profile_post{
@@ -510,6 +538,9 @@ margin: auto;
         display: none;
 }
 
+.my_posts::-webkit-scrollbar{
+        display: none;
+}
 /* div.profile_post:after {
         position: absolute;
     content: "";
@@ -575,7 +606,7 @@ margin: auto;
 
 .setting_icon button:hover i{
     transition: .25s ease;
-    
+
     transform: rotateZ(45deg) translateY(0px);
 }
 
