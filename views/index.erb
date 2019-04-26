@@ -2,7 +2,9 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>LocalCommunity</title>
+	<title>IDOBATA Map</title>
+  <link rel="icon" type="image/x-icon" href="/assets/images/idobatapc2.ico">
+   
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82913843-2"></script>
 <script>
@@ -14,6 +16,7 @@
 </script>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="assets/color-thief.js"></script>
 
     <link rel="stylesheet" href="/assets/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
@@ -27,6 +30,7 @@
 	    <header>
 	        <div class="searchber">
 	            <form action="/tag" autocomplete="off" method="get" autocomplete="off" >
+                <img src="assets/images/idobatapc2.png">
 	                <input type="text" placeholder="＃キーワードを検索..." name="tag" class="tag_s_fo">
 	                <button type="submit" class="tag_s_b"><i class="fas fa-search"></i></button>
 	            </form>
@@ -36,19 +40,30 @@
             <div class="profile">
 
     <% if !current_user.nil? %>
+    <div class="profile_add">
+
+<div class="bo1"></div>
+   <div class="bo2"></div>
+
+    </div>
     <div class="profile_icon">
-  
+
      <img src="">
     </div>
     <div class="setting_icon"><button><i class="fas fa-cog"></i></button></div>
     <div class="profile_post">
 <!--<div class="scroll_m"></div>-->
-            
+
      <div class="my_posts">
-         
+
          <div class="p_view">
       <div class="info_ber">
-       <figure><img></figure>
+      <form name="users" action="/profile_image" method="post" class="profile_image">
+      <label for="pro_img" class="pro_up">
+      <input type="file" id="pro_img" name="pro_icon" value="写真を..." style="display: none;">
+      </label>
+
+          </form>
        <div class="my_pro">
         <p class="my_name"><%= current_user.name %></p>
         <p class="my_bio"><%= current_user.about %></p>
@@ -58,10 +73,21 @@
           </div>
        </div>
       </div>
-                 <% @tasks.each do |task| %>
-                 <script>
+
+
+             <div class="poster">
+
+              <div class="postion">
+                <figure class="figg" onclick="addv()">
+                   <div class="add">
+
+                    </div>
+                             <p class="addp">+</p>
+                  </figure>
+
+   <script>
                   function addv() {
-                      $(".posts<%= task.id %>").toggleClass("pos_visi");
+                      $(".posts").toggleClass("pos_visi");
                       $(".p_view").toggleClass("p_move");
 
                       var a = "saa";
@@ -71,95 +97,17 @@
 
 
                   </script>
-                 <script>
-
-         $(".back").click(function(){
-             $(".posts<%= task.id %>").removeClass("pos_visi");
-                      $(".p_view").removeClass("p_move");
-             console.log("ssaaa")
-         });
-     $(".profile_icon").on("click", function() {
-  $(".profile_post").toggleClass('pr_op');
-         $(".profile_setting").removeClass('st_op');
-});
-
-         $(".setting_icon").on("click", function() {
-  $(".profile_setting").toggleClass('st_op');
- $(".profile_post").removeClass('pr_op');
-});
-    </script>
-             
-                  <% end %>
-
-             <div class="poster">
-                 
-              <div class="postion">
-                <figure class="figg" onclick="addv()">
-                   <div class="add">
-
-                    </div>
-                             <p class="addp">+</p>
-                  </figure>
-                  	 
-               
 
                  <% @tasks.each do |task| %>
-                    
+
                  <figure class="fig<%= task.id %> figfig" onclick="addv()">
                  <img src="<%= task.img %>" class="taskimg<%= task.id %>">
 
 <style>
-    
-    .posts<%= task.id %> form{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.posts<%= task.id %>{
-position: absolute;
-
- 
-  display: flex;
-  visibility: hidden;
-
-    justify-content: center;
- flex-wrap: wrap;
-transform: translateX(calc(100% + 50px));
 
 
-    width: 400px;
-    height: 129px;
-    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
 
 
-}
-
-    
-    .pos_visi{
-    display: flex;
-    visibility: visible!important;
-margin-left: 50px;
-    transform: translateX(calc(0% - 50px));
-        height: 129px;
-transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
-  z-index: 4;
-}
-
-    
-    .up_ber<%= task.id %>{
-    height: 100%;
-    width: 129px;
-     cursor: pointer;
- 
-     display: inline-block;
-    background-image: url(<%= task.img %>);
-}
- 
-
-.up_ber<%= task.id %> input{
-     display: none;
-}
 
     .taskimg<%= task.id %>{
         width: 100%;
@@ -222,7 +170,7 @@ cursor: pointer;
 
                  <div class="po_con<%= task.id %>">
                  <div class="poscon">
-                  <!-- <p class="p_title"><%= CGI.escapeHTML(task.title) %></p>--><p class="p_tag"><% task.tags.each do |tag| %><span style="background-color: #333; color: #fff; border-radius: 2px; margin-right: 2px; padding: 3px 3px 3px 3px;">＃<%= CGI.escapeHTML(tag.post_tag) %></span><% end %></p>
+                  <!-- <p class="p_title"></p>--><p class="p_tag"><% task.tags.each do |tag| %><span style="background-color: #333; color: #fff; border-radius: 2px; margin-right: 2px; padding: 3px 3px 3px 3px;">＃<%= CGI.escapeHTML(tag.post_tag) %></span><% end %></p>
 
                      </div>
 
@@ -237,8 +185,7 @@ cursor: pointer;
 
                     <div class="editform">
                     <form action="/tasks/<%= task.id %>/" autocomplete="off" method="post">
-                     <input type="text" name="title" placeholder="タイトル" value="<%= CGI.escapeHTML(task.title) %>"><br>
-                     <input type="text" name="description" placeholder="説明" value="<%= CGI.escapeHTML(task.description) %>"><br>
+                     <input type="text" name="title" placeholder="タイトル" value=""><br>
                      <input type="text" name="location" placeholder="位置情報" value="<%= CGI.escapeHTML(task.location) %>"><br>
                      <% task.tags.each do |tag| %>
                       <input type="text" name="post_tag" placeholder="タグ" value="<%= CGI.escapeHTML(tag.post_tag) %>"><% end %><br>
@@ -260,12 +207,8 @@ cursor: pointer;
                        });
                      </script>
                     </figure>
-                    <script>
-                     $('.edit').click(function(){
-                      $('.editform').toggleClass('edi_on');
-                     });
-                    </script>
-                    
+
+
 
 
                <% end %>
@@ -274,19 +217,20 @@ cursor: pointer;
               </div>
              </div>
          </div>
-          <% @tasks.each do |task| %>
-           <div class="posts<%= task.id %> disp">
+
+           <div class="posts disp">
                <a class="back"><p>＜ 戻る</p></a>
+
+
  <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
   <div class="pos_in">
-     <label for="image_up" class="up_ber<%= task.id %>">
+     <label for="image_up" class="up_ber">
+     ここクリックで画像をアップロード！
       <input type="file" id="image_up" name="file" value="写真を...">
       </label>
         <div>
    <div class="pos_con">
 
-     <input type="text" name="title" placeholder="タイトル"><br>
-     <input type="text" name="description" placeholder="説明を..."><br>
 
      <input type="text" name="location" placeholder="位置情報を..."><br>
       <input type="text" name="post_tag" placeholder="#tags..."><br>
@@ -295,8 +239,12 @@ cursor: pointer;
 
 
    <div>
-    <input type="submit" value="投稿！！">
+   <label for="posted" class="postbut">
+   投稿！！！
+    <input type="submit" id="posted" value="投稿！！" style="display: none;">
+    </label>
     </div>
+
    </div>
 
 
@@ -305,13 +253,13 @@ cursor: pointer;
   </div>
  </form>
 </div>
-          <% end %>
+
            </div>
     </div>
     <div class="profile_setting">
         <a href="/signout">ログアウト</a>
     </div>
-     
+
     <% else %>
     <a class="log_icon" >
     <p>ログイン／新規登録</p>
@@ -364,21 +312,7 @@ cursor: pointer;
         </form>
      </div>
     </div>
-    <script>
-     $(".log_icon").on("click", function() {
-  $("#log_con").toggleClass('lo_op');
-         $(".sin_con").removeClass('sn_op');
-});
-$('#main').click(function(){
- $("#log_con").removeClass('lo_op');
-});
-    </script>
-    <script>
-     $(".sinki").on("click", function() {
-  $(".sin_con").addClass('sn_op');
-  $("#log_con").removeClass('lo_op');
-});
-    </script>
+
     <% end %>
 
 	  </div>
@@ -404,6 +338,47 @@ $('#main').click(function(){
            console.log("focus");
 	   });
               });
-	  </script>
+
+
+
+     $(".profile_icon").on("click", function() {
+  $(".profile_post").toggleClass('pr_op');
+         $(".profile_setting").removeClass('st_op');
+         console.log("sss");
+});
+
+         $(".setting_icon").on("click", function() {
+  $(".profile_setting").toggleClass('st_op');
+ $(".profile_post").removeClass('pr_op');
+});
+
+                        $(".back").click(function(){
+             $(".posts").removeClass("pos_visi");
+                      $(".p_view").removeClass("p_move");
+             console.log("ssaaa")
+         });
+
+                     $('.edit').click(function(){
+                      $('.editform').toggleClass('edi_on');
+                     });
+
+     $(".log_icon").on("click", function() {
+  $("#log_con").toggleClass('lo_op');
+         $(".sin_con").removeClass('sn_op');
+});
+$('#main').click(function(){
+ $("#log_con").removeClass('lo_op');
+});
+
+     $(".sinki").on("click", function() {
+  $(".sin_con").addClass('sn_op');
+  $("#log_con").removeClass('lo_op');
+});
+    </script>
+
+<script>
+
+    </script>
+
 </body>
 </html>

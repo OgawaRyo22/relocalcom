@@ -44,6 +44,7 @@ end
 
 
 
+
 post '/tasks' do
 
  task = Task.create({
@@ -67,7 +68,6 @@ end
     task_id: task.id,
     tag_id: tag.id
   })
-
  redirect '/'
 end
 

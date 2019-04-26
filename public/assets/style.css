@@ -59,13 +59,19 @@ top: 28px;
 
 .searchber{
     height: 60px;
-    width: 375px;
+    width: 465px;
+    
     background-color: #fff;
    box-shadow:  1px 2px 15px 0px #33333380;
     border-radius: 4px;
         margin-left: 4%;
         transition: 0.15s;
-
+}
+.searchber form img{
+    height: 60%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px #333 solid;
 }
 
 .se_on{
@@ -76,8 +82,9 @@ top: 28px;
 .tag_s_fo{
         border: none;
     height: 100%;
-    width: 80%;
-    margin-left: 20px;
+    width: 66%;
+    margin-top: -1px;
+    margin-left: 10px;
     font-size: 103%;
     font-weight: bold;
     letter-spacing: 2px;
@@ -85,7 +92,7 @@ top: 28px;
 
 .searchber i{
         font-size: 165%;
-    color: #666666;
+    color: #333;
 
 }
 
@@ -103,7 +110,7 @@ top: 28px;
     justify-content: space-between;
     flex-wrap: wrap;
     height: 100%;
-
+align-items: center;
 }
 
 .profile{
@@ -128,16 +135,74 @@ height: 80px;
 .profile_icon:hover{
     box-shadow: 1px 2px 25px 1px #33333388;
     transition: 0.3s;
+    
+ }
+
+.profile_add{
+       border-radius: 50px;
+    margin-left: 30px;
+    width: 50px;
+    height: 50px;
+border: 3px #333 solid;
+    box-sizing: border-box;
+   box-shadow: 1px 2px 15px 0px #33333388;
+    background-size: cover;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+     transition: all 1.0s ease;
+}
+
+.profile_add .bo1{
+
+    content: "";
+    width: 3px;
+        transform: translateX(10.5px) translateY(0.5px);
+  
+    height: 45%;
+    transition: all .3s;
+     box-shadow: 1px 2px 15px 0px #33333388;
+    background-color: #333;
+}
+
+.profile_add .bo2{
+     transform: translateX(-0.75px);
+
+    content: "";
+    height: 3px;
+    width: 45%;
+     box-shadow: 1px 2px 15px 0px #33333388;
+    transition: all .3s;
+    background-color: #333;
+}
+
+
+
+
+.profile_add:hover {
+    box-shadow: 1px 2px 25px 1px #33333388;
  }
 
 .log_icon{
 
     position: relative;
-    overflow: hidden;
+
     font-weight: bold;
 }
 
 @keyframes gradationTest {
+  0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes gradationHikari {
   0% {
 		background-position: 0% 50%
 	}
@@ -163,15 +228,35 @@ height: 80px;
     padding-right: 30px;
     transition: 0.3s;
     border-radius: 9px;
-    box-shadow: 0px 0px 11px 0px #3333337a;
     z-index: 1;
 }
 
-.log_icon:hover{
-    transition: 0.3s;
+.log_icon::after {
+content: "";
+    position: absolute;
+    animation: gradationHikari 5s infinite;
+    z-index: -1;
+    bottom: -7px;
+    height: 115%;
+    top: -2px;
+    width: 103%;
+    left: -3px;
+    opacity: 0.8;
+    border-radius: 10px;
+    background: linear-gradient(-45deg,#e64949,#415cbb);
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+ 
+    
+    transition: all 0.3s ease;
+ 
+}
 
-    box-shadow: 0px 0px 15px 2px #33333380;
-    z-index: 1;
+.log_icon:hover::after{
+  transform: scale(1.05);
 }
 
 .log_icon p{
@@ -182,6 +267,7 @@ height: 80px;
 .wing{
     width: 80px;
     height: 60px;
+    display: none;
     background-color: #ffffff2e;
     position: absolute;
     top: 0;
@@ -206,6 +292,88 @@ height: 80px;
 }
 
 /*---- posts ----*/
+
+    .posts form{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.posts{
+position: absolute;
+
+
+  display: flex;
+  visibility: hidden;
+
+    justify-content: center;
+ flex-wrap: wrap;
+transform: translateX(calc(100% + 50px));
+
+
+    width: 400px;
+    height: 129px;
+    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+
+
+}
+
+
+    .pos_visi{
+    display: flex;
+    visibility: visible!important;
+margin-left: 50px;
+    transform: translateX(calc(0% - 50px));
+        height: 129px;
+transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+  z-index: 4;
+}
+
+
+    .up_ber{
+    height: 40%;
+    width: 400px;
+     cursor: pointer;
+
+     display: inline-block;
+      filter: brightness(1.5);
+     color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+        letter-spacing: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 4px #333 solid;
+        box-sizing: border-box;
+}
+
+.up_ber:hover{
+
+        border: 4px #333 solid;
+}
+
+
+.postbut{
+    width: 200px;
+    margin-bottom: 20px;
+    height: 100px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.postbut:hover{
+    background-color: #333;
+}
+
+.up_ber input{
+     display: none;
+}
 
 #content{
     display: flex;
@@ -269,22 +437,23 @@ height: 80px;
 .pos_in{
     width: 100%;
      justify-content: center;
-    display: flex;
+
 }
 
-.disp{
-z-index: -1;
+.profile_image{
+    width: 129px;
+    height: 129px;
 
-    transition-delay: 1s;
 }
 
 
 
 .pos_con input{
-    width: 229px;
+    width: calc(100% - 12px);
     height: 40px;
-    background-color: #fff;
-
+    background-color: #f4f4f4;
+border-top: 2px #333 solid;
+    border-bottom: 2px #333 solid;
     margin-bottom: 30px;
     padding-left: 6px;
     padding-right: 6px;
@@ -292,7 +461,7 @@ z-index: -1;
 }
 
 .pos_con{
-    margin-left: 30px;
+
 
 }
 
@@ -312,7 +481,7 @@ z-index: -1;
 
 .back p{
     font-size: 25px;
-    color: #666;
+    color: #333;
 }
 
 .poscon{
@@ -348,6 +517,14 @@ z-index: -1;
 
 }
  /*---- profile ----*/
+
+.pro_up{
+        width: 129px;
+        height: 129px;
+    background-color: #333;
+ 
+        display: inline-block;
+    }
 
  .info_ber{
      display: flex;
@@ -428,7 +605,7 @@ z-index: -1;
 
  .profile_icon{
      position: relative;
-     background: linear-gradient(-45deg,#e64949,#415cbb);
+     background-image: url(images/a0163892_23172761.jpg);
      transition: 0.3s;
 
  }
@@ -446,7 +623,7 @@ z-index: -1;
         padding: 40px 50px 40px 50px;
     right: calc(4%);
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 8px;
      transition: 0.3s;
      opacity: 0;
      z-index: -1;
@@ -483,7 +660,7 @@ z-index: -1;
         padding: 40px 50px 40px 50px;
     right: calc(4%);
     background-color: #fff;
-    border-radius: 12px;
+    border-radius: 8px;
      transition: 0.3s;
      opacity: 0;
      z-index: -1;
@@ -558,14 +735,14 @@ z-index: -1;
 }
 
 .setting_icon button i{
-    transition: .25s ease;
+    transition: all .5s cubic-bezier(0.59, 0.01, 0.28, 0.99);
         text-shadow: 1px 2px 15px #33333388;
 }
 
 .setting_icon button:hover i{
-    transition: .25s ease;
+ 
 
-    transform: rotateZ(45deg) translateY(0px);
+    transform: rotateZ(75deg) translateY(0px);
 }
 
 .postion{
@@ -578,7 +755,7 @@ z-index: -1;
 }
 
     .figg{
-         border: 2px solid #666;
+         border: 2px solid #333;
     box-sizing: border-box;
         display: flex;
         align-items: center;
@@ -619,7 +796,7 @@ justify-content: center;
         border: 2px solid;
         text-align: center;
         font-size: 30px;
-        color: #666;
+        color: #333;
 
 }
 
@@ -630,7 +807,7 @@ justify-content: center;
             top: 40px;
         text-align: center;
         font-size: 30px;
-        color: #666;
+        color: #333;
 
 }
 
@@ -766,7 +943,7 @@ justify-content: center;
     width: 80%;
     /* height: 60px; */
     font-size: 15px;
-    color: #666;
+    color: #333;
  }
 
  .mail{
@@ -775,10 +952,10 @@ justify-content: center;
      flex-wrap: wrap;
      justify-content: start;
     /* height: 60px; */
-    border-bottom: 2px #666 solid;
+    border-bottom: 2px #333 solid;
     margin-top: 30px;
     padding-bottom: 5px;
-    color: #666;
+    color: #333;
  }
 
  .pass{
@@ -787,10 +964,10 @@ justify-content: center;
      flex-wrap: wrap;
      justify-content: start;
     /* height: 60px; */
-    border-bottom: 2px #666 solid;
+    border-bottom: 2px #333 solid;
     margin-top: 30px;
     padding-bottom: 5px;
-    color: #666;
+    color: #333;
  }
 
  .login .mail i{
@@ -811,7 +988,7 @@ justify-content: center;
  .login button {
     margin-top: 30px;
     width: 100%;
-    background-color: #666;
+    background-color: #333;
     border: none;
     color: #fff;
     border-radius: 4px;
@@ -844,10 +1021,10 @@ margin-bottom: 27px;
     flex-wrap: wrap;
     justify-content: start;
     /* height: 60px; */
-    border-bottom: 2px #666 solid;
+    border-bottom: 2px #333 solid;
     margin-top: 30px;
     padding-bottom: 5px;
-    color: #666;
+    color: #333;
     position: relative;
 }
 
@@ -871,7 +1048,7 @@ margin-bottom: 27px;
        width: 80%;
     /* height: 60px; */
     font-size: 15px;
-    color: #666;
+    color: #333;
 }
 
 .touroku div i{
