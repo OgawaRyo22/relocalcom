@@ -73,34 +73,15 @@
           </div>
        </div>
       </div>
-
-
              <div class="poster">
 
               <div class="postion">
-                <figure class="figg" onclick="addv()">
-                   <div class="add">
 
-                    </div>
-                             <p class="addp">+</p>
-                  </figure>
-
-   <script>
-                  function addv() {
-                      $(".posts").toggleClass("pos_visi");
-                      $(".p_view").toggleClass("p_move");
-
-                      var a = "saa";
-                      console.log(a);
-                  };
-
-
-
-                  </script>
+   <script src="/assets/script.js"></script>
 
                  <% @tasks.each do |task| %>
 
-                 <figure class="fig<%= task.id %> figfig" onclick="addv()">
+                 <figure class="fig<%= task.id %> figfig" onclick="">
                  <img src="<%= task.img %>" class="taskimg<%= task.id %>">
 
 <style>
@@ -116,7 +97,7 @@
         height: auto;
     }
 
-    .fig<%= task.id %>:hover .taskimg<%= task.id %>{
+.fig<%= task.id %>:hover .taskimg<%= task.id %>{
          width: 100%;
          object-fit: cover;
         transform: scale(1.1);
@@ -145,7 +126,7 @@ margin-top: 6px;
 
 
 
-    .fig<%= task.id %>:hover{
+ .fig<%= task.id %>:hover{
 
 
 cursor: pointer;
@@ -216,10 +197,9 @@ cursor: pointer;
 
               </div>
              </div>
+            
          </div>
-
            <div class="posts disp">
-               <a class="back"><p>＜ 戻る</p></a>
 
 
  <form action="/tasks" autocomplete="off" method="post" enctype="multipart/form-data">
@@ -253,8 +233,17 @@ cursor: pointer;
   </div>
  </form>
 </div>
-
+         <div class="chatting"></div>
+         <div class="setting"></div>
            </div>
+            <div class="colum">
+                 <ul>
+                     <li class="p_profile" onclick="prov()"></li>
+                     <li class="p_add" onclick="addv()"></li>
+                     <li class="p_chat" onclick="chav()"></li>
+                     <li class="p_set" onclick="setv()"></li>
+                 </ul>
+             </div>
     </div>
     <div class="profile_setting">
         <a href="/signout">ログアウト</a>

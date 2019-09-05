@@ -293,10 +293,107 @@ content: "";
 
 /*---- posts ----*/
 
+.colum{
+       position: absolute;
+        bottom: 15px;
+    height: 60px;
+
+    width: 400px;
+    background: linear-gradient(0deg, #ffffff 50%, #ffffff 50%);
+}
+
+.colum ul {
+       display: grid;
+    color: #333;
+    grid-template-rows: 100%;
+    height: 100%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.colum li{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+      font-family: "Font Awesome 5 Free";
+        font-size: 22px;
+    transition: .1s;
+}
+
+.colum li:before{
+    transition: all .3s cubic-bezier(0.02, 0.71, 0.25, 1);
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: #222222;
+    position: absolute;
+    bottom: 10px;
+}
+
+.colum li:hover::before {
+    content: "";
+    width: 9%;
+    height: 3px;
+    background-color: #222;
+    position: absolute;
+    bottom: 10px;
+}
+
+.colum li:active{
+    transform: scale(0.9);
+    transition: all .2s;
+}
+
+.colum li::after{
+      font-family: "Font Awesome 5 Free";
+}
+
+.colum .p_profile::after{
+    content: "\f007";
+}.colum .p_profile:hover::after{
+    content: "\f007";
+}
+
+.colum .p_add::after{
+    content: "\f0fe";
+}.colum .p_add:hover::after{
+    content: "\f0fe";
+}
+
+.colum .p_chat::after{
+    content: "\f4ad";
+}.colum .p_chat:hover::after{
+    content: "\f4ad";
+}
+
+.colum .p_set::after{
+    content: "\f013";
+}.colum .p_set:hover::after{
+    content: "\f013";
+}
+
     .posts form{
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.p_view{
+    width: 100%;
+     transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+
+}
+
+.p_move1{
+    transform: translateX(calc(-100% - 50px) );
+}
+
+.p_move2{
+        transform: translateX(calc(-200% - 100px) );
+}
+
+.p_move3{
+        transform: translateX(calc(-300% - 150px) );
 }
 
 .posts{
@@ -304,32 +401,78 @@ position: absolute;
 
 
   display: flex;
-  visibility: hidden;
 
     justify-content: center;
  flex-wrap: wrap;
-transform: translateX(calc(100% + 50px));
+transform: translateX(calc(100% + 0px));
 
-
+margin-left: 50px;
     width: 400px;
-    height: 129px;
     transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
 
 
 }
 
-
-    .pos_visi{
-    display: flex;
-    visibility: visible!important;
-margin-left: 50px;
+.pos_visi1{
     transform: translateX(calc(0% - 50px));
-        height: 129px;
-transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
-  z-index: 4;
 }
 
+.pos_visi2{
+        transform: translateX(calc(-100% - 100px));
+}
 
+.pos_visi3{
+        transform: translateX(calc(-200% - 50px));
+}
+
+.chatting{
+    position: absolute;
+  display: flex;
+    justify-content: center;
+ flex-wrap: wrap;
+    transform: translateX(calc(200% + 50px));
+    width: 400px;
+    height: 200px;
+    background-color: #e63c35;
+    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+}
+
+.chatting1{
+     transform: translateX(calc(100% + 50px));
+}
+
+.chatting2{
+     transform: translateX(calc(0% + 0px));
+}
+
+.chatting3{
+     transform: translateX(calc(-100% + -50px));
+}
+
+.setting{
+     position: absolute;
+  display: flex;
+    justify-content: center;
+ flex-wrap: wrap;
+    transform: translateX(calc(300% + 50px));
+margin-left: 50px;
+    width: 400px;
+    height: 200px;
+    background-color: #13eab2;
+    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
+}
+
+.setting1{
+     transform: translateX(calc(200% + 50px));
+}
+
+.setting2{
+        transform: translateX(calc(100% + 0px));
+}
+
+.setting3{
+     transform: translateX(calc(0% + -50px));
+}
     .up_ber{
     height: 40%;
     width: 400px;
@@ -430,6 +573,7 @@ transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
      flex-wrap: wrap;
      justify-content: start;
      height: 100%;
+     position: relative;
  }
 
 
@@ -526,11 +670,25 @@ border-top: 2px #333 solid;
         display: inline-block;
     }
 
- .info_ber{
+ .pr_op .info_ber{
      display: flex;
      width: 100%;
      height: 150px;
+         transform: translateY(0px);
+     transition: all .5s ease;
+     transition-delay: .2s;
+     opacity: 1;
  }
+
+.info_ber{
+    transform: translateY(-100px);
+     display: flex;
+     width: 100%;
+     height: 150px;
+    opacity: 0;
+ }
+
+
 
  .info_ber figure{
      width: 129px;
@@ -569,20 +727,64 @@ border-top: 2px #333 solid;
     justify-content: flex-start;
     flex-wrap: wrap;
      width: 100%;
+              transform: translateY(-100px);
+     transition: all .5s ease;
+     transition-delay: .4s;
+     opacity: 0;
  }
 
-.p_view{
-    width: 100%;
-     transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
-
+.pr_op .poster{
+        transform: translateY(0px);
+      opacity: 1;
 }
 
-.p_move{
-    transition: 0.5s cubic-bezier(0.08, 0.59, 0.11, 1);
-    transform: translateX(-100%);
-    visibility: hidden;
-    
+
+/* .fig1{
+      transition: all .5s ease;
+     transform: translateY(-50px);
+         transition-delay: 1s;
 }
+.fig2{
+      transition: all .5s ease;
+     transform: translateY(-50px);
+         transition-delay: 1.5s;
+}
+.fig3{
+      transition: all .5s ease;
+     transform: translateY(-50px);
+         transition-delay: 2.0s;
+}
+.fig4{
+      transition: all .5s ease;
+     transform: translateY(-50px);
+         transition-delay: 2.5s;
+}
+
+.pr_op .fig1{
+      transition: all .5s ease;
+     transform: translateY(0px);
+         transition-delay: .42s;
+}
+.pr_op .fig2{
+      transition: all .5s ease;
+     transform: translateY(0px);
+         transition-delay: .44s;
+}
+.pr_op .fig3{
+      transition: all .5s ease;
+     transform: translateY(0px);
+         transition-delay: .46s;
+}
+.pr_op .fig4{
+      transition: all .5s ease;
+     transform: translateY(0px);
+         transition-delay: .48s;
+}
+
+*/
+
+
+
 
 
 
@@ -657,16 +859,16 @@ border-top: 2px #333 solid;
     position: absolute;
     top: 90px;
     width: 20%;
-        padding: 40px 50px 40px 50px;
+        padding: 60px 45px 60px 45px;
     right: calc(4%);
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 15px;
      transition: 0.3s;
      opacity: 0;
      z-index: -1;
      width: 400px;
      overflow: scroll;
-     height: 65vh;
+     height: 56vh;
  }
 
  .profile_post::-webkit-scrollbar{

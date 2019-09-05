@@ -61,6 +61,7 @@ heroku run rake bd:migrate　データベースリセット＆更新
 ③	既に似たアプリがある
 ④	目的は？なぜこのアプリ？
 　人？イベント？どっちを焦点
+④ターゲットを定めてからターゲットを広める。
 
 
 Cloudinary.config do |config|
@@ -68,3 +69,4 @@ Cloudinary.config do |config|
   config.api_key = ENV['769759534573387']
   config.api_secret = ENV['ZkXHkCKTT530t7PZRKxhH7Eg9XI']
 end
+
